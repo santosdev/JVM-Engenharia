@@ -31,9 +31,9 @@ O `Dockerfile` prepara todas as páginas do site e a API para hospedagem em um s
 
 ### GitHub Pages
 
-O workflow `.github/workflows/pages.yml` publica automaticamente a versão atual quando há alterações em `main`. O repositório usa **GitHub Actions** como origem de publicação. A versão atual fica em `https://devfabiomart7.github.io/JVM-Engenharia/`; a versão anterior, preservada para comparação, fica em `https://devfabiomart7.github.io/JVM-Engenharia/preview/`. O Pages publica HTML, CSS, JavaScript e imagens; ele não executa o backend Node.
+O workflow `.github/workflows/pages.yml` publica automaticamente a versão atual quando há alterações em `main`. O repositório usa **GitHub Actions** como origem de publicação. A versão atual fica em `https://santosdev.github.io/JVM-Engenharia/`; a versão anterior, preservada para comparação, fica em `https://santosdev.github.io/JVM-Engenharia/preview/`. O Pages publica HTML, CSS, JavaScript e imagens; ele não executa o backend Node.
 
-Por isso, o formulário avisa que ainda precisa de um backend quando aberto no domínio `github.io`. Quando a API Node estiver hospedada separadamente, preencha `window.JVM_CONTACT_API_URL` em `js/config.js` com sua origem HTTPS, sem `/api/contact`, e inclua `https://devfabiomart7.github.io` em `ALLOWED_ORIGINS` no backend.
+Por isso, o formulário avisa que ainda precisa de um backend quando aberto no domínio `github.io`. Quando a API Node estiver hospedada separadamente, preencha `window.JVM_CONTACT_API_URL` em `js/config.js` com sua origem HTTPS, sem `/api/contact`, e inclua `https://santosdev.github.io` em `ALLOWED_ORIGINS` no backend.
 
 Use HTTPS na hospedagem. Deixe `TRUST_PROXY=false`, a menos que a plataforma use um proxy reverso confiável e sobrescreva os cabeçalhos `X-Forwarded-For` e `X-Forwarded-Proto`; só então habilite-o para que o limite de requisições identifique o IP real do visitante. O servidor aplica CSP, proteção contra enquadramento, nosniff, política de referência e HSTS quando a conexão é HTTPS (direta ou informada por proxy confiável). As páginas estáticas também incluem uma CSP por meta tag; configure os cabeçalhos equivalentes no CDN para obter proteção completa de cabeçalhos.
 
