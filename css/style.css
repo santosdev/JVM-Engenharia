@@ -824,7 +824,7 @@ em {
 .training-image {
   position:absolute;
   inset:0 32px 28px 0;
-  background:linear-gradient(0deg,rgba(16,40,59,.24),transparent 55%),url('../assets/images/jvm-treinamento-turma.jpeg') center/cover
+  background:linear-gradient(0deg,rgba(16,40,59,.24),transparent 55%),url('../assets/assets_JVM/jvm-treinamento-turma.jpeg') center/cover
 }
 .training-image-secondary {
   position:absolute;
@@ -833,7 +833,7 @@ em {
   width:42%;
   height:34%;
   border:8px solid #fff;
-  background:url('../assets/images/jvm-treinamento-aula.jpg') center/cover;
+  background:url('../assets/assets_JVM/jvm-treinamento-aula.jpg') center/cover;
   box-shadow:0 12px 32px rgba(16,40,59,.18)
 }
 .training-caption {
@@ -1127,11 +1127,6 @@ em {
 :root[data-theme="dark"] .client-mark {
   background:#27363a;
   color:#e2b25e
-}
-:root[data-theme="dark"] .client-card--brand .client-mark {
-  background-color:var(--surface);
-  border-color:rgba(255,255,255,.16);
-  box-shadow:0 6px 20px rgba(0,0,0,.2)
 }
 :root[data-theme="dark"] .card-link,
 :root[data-theme="dark"] .contact-info .whatsapp-link,
@@ -1575,8 +1570,8 @@ em {
 .hero-tabs button span { color:#87969d; font-size:9px; }
 .hero-tabs button:hover, .hero-tabs button[aria-selected="true"] { color:#fff; background:rgba(255,255,255,.08); }
 .hero-tabs button[aria-selected="true"] span { color:#e8bd75; }
-.hero-showcase[data-active-service="seguranca"] .hero-photo { background-image:url('../assets/images/jvm-treinamento-aula.jpg'); }
-.hero-showcase[data-active-service="treinamentos"] .hero-photo { background-image:url('../assets/images/jvm-treinamento-turma.jpeg'); }
+.hero-showcase[data-active-service="seguranca"] .hero-photo { background-image:url('../assets/assets_JVM/jvm-treinamento-aula.jpg'); }
+.hero-showcase[data-active-service="treinamentos"] .hero-photo { background-image:url('../assets/assets_JVM/jvm-treinamento-turma.jpeg'); }
 .hero-showcase .hero-index { left:50%; }
 .hero-showcase :focus-visible { outline:2px solid #e8bd75; outline-offset:4px; }
 @media(max-width:900px) {
@@ -1625,8 +1620,8 @@ em {
   background:radial-gradient(ellipse at 88% 50%,rgba(226,178,94,.09),transparent 42%);
   content:"";
 }
-.page-banner--about { background:linear-gradient(90deg,rgba(9,19,25,.91),rgba(9,19,25,.34)),url('../assets/images/jvm-treinamento-aula.jpg') center 42%/cover; }
-.page-banner--courses { background:linear-gradient(90deg,rgba(9,19,25,.91),rgba(9,19,25,.34)),url('../assets/images/jvm-treinamento-turma.jpeg') center 42%/cover; }
+.page-banner--about { background:linear-gradient(90deg,rgba(9,19,25,.91),rgba(9,19,25,.34)),url('../assets/assets_JVM/jvm-treinamento-aula.jpg') center 42%/cover; }
+.page-banner--courses { background:linear-gradient(90deg,rgba(9,19,25,.91),rgba(9,19,25,.34)),url('../assets/assets_JVM/jvm-treinamento-turma.jpeg') center 42%/cover; }
 .page-banner--services { background-image:linear-gradient(110deg,#0c1820,#162b36 72%,#1d3540); }
 .page-banner--clients { background-image:linear-gradient(110deg,#111d24,#182b34 72%,#21333a); }
 .page-banner--contact { background-image:linear-gradient(110deg,#0e1b22,#172b35 72%,#26343a); }
@@ -1724,6 +1719,21 @@ em {
 :root[data-theme="dark"] .contact-cta { color:#f7f8f8; }
 :root[data-theme="dark"] .contact-cta .cta-inner .eyebrow,
 :root[data-theme="dark"] .contact-cta .cta-whatsapp { color:#e8bd75; }
+/* Keep customer logo galleries on a white surface in either theme. */
+.clients-preview {
+  --ink:#203644;
+  --muted:#657781;
+  --line:#dce3e3;
+  --surface:#fff;
+  --surface-soft:#f3f5f4;
+  --card-hover:#f7f8f7;
+  color:var(--ink);
+  background:#fff;
+}
+.clients-preview .client-card--brand .client-mark {
+  background:#fff;
+  border-color:var(--line);
+}
 @media(max-width:680px) {
   .page-banner { padding:74px 0 66px; text-align:center; }
   .page-banner h1, .page-banner>div>p:last-child { margin-inline:auto; text-align:center; }
