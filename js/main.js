@@ -71,6 +71,79 @@ navigation.querySelectorAll('a').forEach((link) => {
   });
 });
 
+const heroShowcase = document.querySelector('.hero-showcase');
+if (heroShowcase) {
+  const serviceSlides = {
+    eletrica: {
+      title: 'Engenharia elétrica',
+      label: 'INSTALAÇÕES E MANUTENÇÃO',
+      description: 'Subestações, instalações prediais e industriais, quadros elétricos e automação.',
+      link: 'servicos.html',
+      linkLabel: 'Ver serviços de elétrica',
+      imageLabel: 'Imagem ilustrativa de placa eletrônica',
+    },
+    seguranca: {
+      title: 'Segurança do trabalho',
+      label: 'INSPEÇÕES E AVALIAÇÕES',
+      description: 'Termografia, inspeções NR10 e NR12, SPDA e sistemas de incêndio.',
+      link: 'servicos.html',
+      linkLabel: 'Veja nossos serviços',
+      imageLabel: 'Profissional em treinamento de segurança do trabalho',
+    },
+    treinamentos: {
+      title: 'Treinamentos profissionais',
+      label: 'CURSOS E NORMAS REGULAMENTADORAS',
+      description: 'Formação em elétrica, comandos, automação e treinamentos em NRs.',
+      link: 'cursos.html',
+      linkLabel: 'Explore os cursos',
+      imageLabel: 'Turma em treinamento profissional',
+    },
+  };
+  const tabs = [...heroShowcase.querySelectorAll('[role="tab"]')];
+  const title = heroShowcase.querySelector('#hero-feature-title');
+  const label = heroShowcase.querySelector('#hero-feature-label');
+  const description = heroShowcase.querySelector('#hero-feature-description');
+  const link = heroShowcase.querySelector('#hero-feature-link');
+  const photo = heroShowcase.querySelector('#hero-photo');
+  const counter = heroShowcase.querySelector('#hero-counter');
+  const panel = heroShowcase.querySelector('#hero-feature-panel');
+
+  function selectService(tab, moveFocus = false) {
+    const slide = serviceSlides[tab.dataset.service];
+    if (!slide) return;
+    tabs.forEach((item) => {
+      const active = item === tab;
+      item.setAttribute('aria-selected', String(active));
+      item.tabIndex = active ? 0 : -1;
+    });
+    heroShowcase.dataset.activeService = tab.dataset.service;
+    panel.setAttribute('aria-labelledby', tab.id);
+    title.textContent = slide.title;
+    label.textContent = slide.label;
+    description.textContent = slide.description;
+    link.href = slide.link;
+    link.firstChild.textContent = `${slide.linkLabel} `;
+    photo.setAttribute('aria-label', slide.imageLabel);
+    counter.firstChild.textContent = `${String(tabs.indexOf(tab) + 1).padStart(2, '0')} `;
+    if (moveFocus) tab.focus();
+  }
+
+  tabs.forEach((tab) => {
+    tab.addEventListener('click', () => selectService(tab));
+    tab.addEventListener('keydown', (event) => {
+      const index = tabs.indexOf(tab);
+      let nextIndex;
+      if (event.key === 'ArrowRight') nextIndex = (index + 1) % tabs.length;
+      else if (event.key === 'ArrowLeft') nextIndex = (index - 1 + tabs.length) % tabs.length;
+      else if (event.key === 'Home') nextIndex = 0;
+      else if (event.key === 'End') nextIndex = tabs.length - 1;
+      else return;
+      event.preventDefault();
+      selectService(tabs[nextIndex], true);
+    });
+  });
+}
+
 document.querySelectorAll('#year').forEach((year) => {
   year.textContent = new Date().getFullYear();
 });

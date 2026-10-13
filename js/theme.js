@@ -2,7 +2,7 @@ try {
   const savedTheme = localStorage.getItem('jvm-theme');
   if (savedTheme === 'light' || savedTheme === 'dark') {
     document.documentElement.dataset.theme = savedTheme;
-  } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+  } else {
     document.documentElement.dataset.theme = 'dark';
   }
 } catch {
