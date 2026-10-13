@@ -66,48 +66,34 @@
       </div>
     </header>
     <main id="conteudo">
-      <section class="hero" id="inicio">
-        <div class="hero-photo" role="img" aria-label="Instalação elétrica industrial em ambiente técnico">
-        </div>
-        <div class="hero-shade">
-        </div>
-        <div class="container hero-content">
-          <p class="eyebrow eyebrow-light">
-            <span>
-            </span>
-            JVM ENGENHARIA &amp; TREINAMENTO</p>
-          <h1>Engenharia e segurança para
-            <em>avançar com confiança.</em>
-          </h1>
-          <p class="hero-lead">Soluções técnicas em engenharia elétrica, segurança do trabalho e capacitação profissional para empresas no Distrito Federal e em Goiás.</p>
-          <div class="hero-actions">
-            <a class="button" href="contato.html">Converse com nossa equipe
-              <span aria-hidden="true">
-                <svg class="link-icon" viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M7 17 17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"/>
-                </svg>
-              </span>
-            </a>
-            <a class="text-link light-link" href="servicos.html">Conheça os serviços
-              <span aria-hidden="true">
-                <svg class="link-icon" viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M7 17 17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"/>
-                </svg>
-              </span>
-            </a>
+      <section class="hero hero-showcase" id="inicio" data-active-service="eletrica">
+        <div class="hero-photo" id="hero-photo" role="img" aria-label="Painel elétrico industrial"></div>
+        <div class="hero-shade"></div>
+        <div class="container hero-showcase-layout">
+          <div class="hero-content">
+            <p class="eyebrow eyebrow-light"><span></span> JVM ENGENHARIA &amp; TREINAMENTO</p>
+            <h1>Engenharia que mantém sua operação <em>em movimento.</em></h1>
+            <p class="hero-lead">Soluções técnicas para empresas que valorizam segurança, continuidade e confiança em cada etapa.</p>
+            <div class="hero-actions">
+              <a class="button" href="contato.html">Converse com nossa equipe <span aria-hidden="true"><svg class="link-icon" viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"/></svg></span></a>
+              <a class="text-link light-link" href="servicos.html">Conheça os serviços <span aria-hidden="true"><svg class="link-icon" viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"/></svg></span></a>
+            </div>
           </div>
-          <div class="hero-note">
-            <span class="note-line">
-            </span>
-            <span>Responsabilidade técnica
-              <br>em cada etapa do trabalho</span>
-          </div>
-        </div>
-        <div class="hero-index">
-          <span>01</span>
-          <span class="index-line">
-          </span>
-          <span>ENGENHARIA · SEGURANÇA · FORMAÇÃO</span>
+          <aside class="hero-feature" aria-label="Destaque de serviços">
+            <div class="hero-feature-top"><span>ÁREAS DE ATUAÇÃO</span><span id="hero-counter" aria-live="polite">01 <i>/ 03</i></span></div>
+            <div class="hero-feature-content" id="hero-feature-panel" role="tabpanel" aria-labelledby="hero-tab-eletrica" tabindex="0" aria-live="polite" aria-atomic="true">
+              <p class="hero-feature-label" id="hero-feature-label">SOLUÇÕES PARA SUA EMPRESA</p>
+              <h2 id="hero-feature-title">Engenharia elétrica</h2>
+              <p id="hero-feature-description">Instalações e manutenção para manter sua operação segura e funcionando.</p>
+              <a class="hero-feature-link" id="hero-feature-link" href="servicos.html">Conheça a solução <span aria-hidden="true">↗</span></a>
+            </div>
+            <div class="hero-tabs" role="tablist" aria-label="Escolha uma área de atuação">
+              <button type="button" role="tab" id="hero-tab-eletrica" aria-selected="true" aria-controls="hero-feature-panel" tabindex="0" data-service="eletrica"><span>01</span> Elétrica</button>
+              <button type="button" role="tab" id="hero-tab-seguranca" aria-selected="false" aria-controls="hero-feature-panel" tabindex="-1" data-service="seguranca"><span>02</span> Segurança</button>
+              <button type="button" role="tab" id="hero-tab-treinamentos" aria-selected="false" aria-controls="hero-feature-panel" tabindex="-1" data-service="treinamentos"><span>03</span> Treinamentos</button>
+            </div>
+          </aside>
+          <div class="hero-index"><span>JVM ENGENHARIA</span><span class="index-line"></span><span>DF · GO</span></div>
         </div>
       </section>
       <section class="intro section-pad">
