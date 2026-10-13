@@ -3,6 +3,14 @@ const navigation = document.querySelector('#site-nav');
 const themeButton = document.querySelector('#theme-toggle');
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
+const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+navigation?.querySelectorAll('a[href]').forEach((link) => {
+  const target = new URL(link.href, window.location.href);
+  if (target.origin === window.location.origin && target.pathname.split('/').pop() === currentPage) {
+    link.setAttribute('aria-current', 'page');
+  }
+});
+
 if (!reduceMotion.matches) {
   document.documentElement.classList.add('page-entering');
 }
@@ -32,6 +40,17 @@ document.querySelectorAll('a[href]').forEach((link) => {
     document.documentElement.classList.add('page-leaving');
     window.setTimeout(() => window.location.assign(destination.href), 170);
   });
+});
+
+document.addEventListener('click', (event) => {
+  const link = event.target.closest('a[href]');
+  if (!link) return;
+  const url = new URL(link.href, window.location.href);
+  const type = url.hostname === 'wa.me' ? 'whatsapp_click' : url.protocol === 'tel:' ? 'phone_click' : '';
+  if (!type) return;
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push({ event: type });
+  window.dispatchEvent(new CustomEvent('jvm:lead', { detail: { type } }));
 });
 
 function updateThemeButton(theme) {
@@ -161,6 +180,9 @@ contactForm?.addEventListener('submit', (event) => {
 
   const formData = new FormData(form);
   const payload = Object.fromEntries(formData.entries());
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push({ event: 'contact_form_submit', service: payload.assunto });
+  window.dispatchEvent(new CustomEvent('jvm:lead', { detail: { type: 'contact_form_submit', service: payload.assunto } }));
 
   if (isGitHubPages && !contactApiBaseUrl) {
     note.dataset.state = 'error';

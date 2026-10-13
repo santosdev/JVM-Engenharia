@@ -31,6 +31,8 @@ const contentTypes = {
   '.css': 'text/css; charset=utf-8',
   '.html': 'text/html; charset=utf-8',
   '.ico': 'image/x-icon',
+  '.jpg': 'image/jpeg',
+  '.jpeg': 'image/jpeg',
   '.js': 'text/javascript; charset=utf-8',
   '.png': 'image/png',
   '.svg': 'image/svg+xml',
@@ -149,7 +151,9 @@ async function handleContact(request, response) {
           '',
           `Nome: ${result.contact.name}`,
           `E-mail: ${result.contact.email}`,
-          `Telefone: ${result.contact.phone || 'Não informado'}`,
+          `Empresa: ${result.contact.company || 'Não informada'}`,
+          `WhatsApp: ${result.contact.phone}`,
+          `Cidade: ${result.contact.city}`,
           `Assunto: ${result.contact.subject}`,
           '',
           'Mensagem:',
@@ -179,12 +183,16 @@ function validateContact(payload) {
 
   const name = cleanText(payload.nome, 100);
   const email = cleanText(payload.email, 254).toLowerCase();
+  const company = cleanText(payload.empresa, 120);
   const phone = cleanText(payload.telefone, 30);
+  const city = cleanText(payload.cidade, 100);
   const subject = cleanText(payload.assunto, 60);
   const message = cleanText(payload.mensagem, 4_000);
   const subjects = new Set([
-    'Serviços de engenharia',
+    'Engenharia elétrica',
     'Inspeções e laudos',
+    'Elevadores',
+    'Segurança do trabalho',
     'Cursos e treinamentos',
     'Outro assunto',
   ]);
@@ -192,7 +200,7 @@ function validateContact(payload) {
   if (name.length < 2 || !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) {
     return { ok: false, message: 'Informe um nome e um e-mail válidos.' };
   }
-  if (phone && !/^[0-9+() .-]{8,30}$/.test(phone)) {
+  if (!city || !/^[0-9+() .-]{8,30}$/.test(phone)) {
     return { ok: false, message: 'Confira o telefone informado.' };
   }
   if (!subjects.has(subject)) {
@@ -202,7 +210,7 @@ function validateContact(payload) {
     return { ok: false, message: 'A mensagem precisa ter pelo menos 10 caracteres.' };
   }
 
-  return { ok: true, contact: { name, email, phone, subject, message } };
+  return { ok: true, contact: { name, email, company, phone, city, subject, message } };
 }
 
 function cleanText(value, maxLength) {
@@ -332,8 +340,8 @@ function serveStatic(request, response, pathname) {
     return sendJson(response, 400, { message: 'Caminho inválido.' });
   }
 
-  const allowedPages = new Set(['/index.html', '/sobre.html', '/servicos.html', '/cursos.html', '/clientes.html', '/contato.html']);
-  const allowedPath = decodedPath === '/' || allowedPages.has(decodedPath) || /^\/(css|js|assets)\/[a-zA-Z0-9._/-]+$/.test(decodedPath);
+  const allowedPages = new Set(['/index.html', '/sobre.html', '/servicos.html', '/cursos.html', '/clientes.html', '/contato.html', '/elevadores.html', '/projetos.html', '/insights.html', '/inspecao-eletrica.html', '/inspecao-spda.html', '/termografia.html', '/nr12.html', '/privacidade.html']);
+  const allowedPath = decodedPath === '/' || allowedPages.has(decodedPath) || /^\/(css|js|assets)\/[a-zA-Z0-9._/ -]+$/.test(decodedPath);
   if (!allowedPath || decodedPath.split('/').includes('..')) {
     return sendJson(response, 404, { message: 'Página não encontrada.' });
   }
