@@ -99,7 +99,10 @@ if (heroShowcase) {
       description: 'Subestações, instalações prediais e industriais, quadros elétricos e automação.',
       link: 'servicos.html',
       linkLabel: 'Ver serviços de elétrica',
-      imageLabel: 'Imagem ilustrativa de placa eletrônica',
+      imageSrc: 'assets/assets_JVM/hero-engenharia-eletrica.svg',
+      imageAlt: 'Linhas de transmissão e subestação elétrica ao entardecer.',
+      imageWidth: 1600,
+      imageHeight: 900,
     },
     seguranca: {
       title: 'Segurança do trabalho',
@@ -107,7 +110,10 @@ if (heroShowcase) {
       description: 'Termografia, inspeções NR10 e NR12, SPDA e sistemas de incêndio.',
       link: 'servicos.html',
       linkLabel: 'Veja nossos serviços',
-      imageLabel: 'Profissional em treinamento de segurança do trabalho',
+      imageSrc: 'assets/assets_JVM/seguranca-do-trabalho.svg',
+      imageAlt: 'Capacete, escudo e checklist de segurança do trabalho.',
+      imageWidth: 1200,
+      imageHeight: 800,
     },
     treinamentos: {
       title: 'Treinamentos profissionais',
@@ -115,7 +121,10 @@ if (heroShowcase) {
       description: 'Formação em elétrica, comandos, automação e treinamentos em NRs.',
       link: 'cursos.html',
       linkLabel: 'Explore os cursos',
-      imageLabel: 'Turma em treinamento profissional',
+      imageSrc: 'assets/assets_JVM/treinamentos-nrs.svg',
+      imageAlt: 'Sala de treinamento com instrutor, quadro e certificado.',
+      imageWidth: 1200,
+      imageHeight: 800,
     },
   };
   const tabs = [...heroShowcase.querySelectorAll('[role="tab"]')];
@@ -123,7 +132,7 @@ if (heroShowcase) {
   const label = heroShowcase.querySelector('#hero-feature-label');
   const description = heroShowcase.querySelector('#hero-feature-description');
   const link = heroShowcase.querySelector('#hero-feature-link');
-  const photo = heroShowcase.querySelector('#hero-photo');
+  const heroImage = heroShowcase.querySelector('#hero-image');
   const counter = heroShowcase.querySelector('#hero-counter');
   const panel = heroShowcase.querySelector('#hero-feature-panel');
 
@@ -142,7 +151,10 @@ if (heroShowcase) {
     description.textContent = slide.description;
     link.href = slide.link;
     link.firstChild.textContent = `${slide.linkLabel} `;
-    photo.setAttribute('aria-label', slide.imageLabel);
+    heroImage.src = slide.imageSrc;
+    heroImage.alt = slide.imageAlt;
+    heroImage.width = slide.imageWidth;
+    heroImage.height = slide.imageHeight;
     counter.firstChild.textContent = `${String(tabs.indexOf(tab) + 1).padStart(2, '0')} `;
     if (moveFocus) tab.focus();
   }

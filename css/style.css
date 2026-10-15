@@ -407,10 +407,8 @@ html::after {
 .hero-photo {
   position:absolute;
   inset:0 0 0 38%;
-  background-image:url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=2000&q=82');
   background-position:center;
   background-size:cover;
-  filter:saturate(.65)
 }
 .hero-shade {
   position:absolute;
@@ -1518,6 +1516,75 @@ em {
   }
 }
 
+/* Keep text and surfaces readable in both color themes. */
+:root[data-theme="dark"] body {
+  background:var(--surface);
+  color:var(--ink);
+}
+:root[data-theme="dark"] .intro,
+:root[data-theme="dark"] .proof,
+:root[data-theme="dark"] .training,
+:root[data-theme="dark"] .home-training,
+:root[data-theme="dark"] .contact,
+:root[data-theme="dark"] .services {
+  background:var(--surface);
+  color:var(--ink);
+}
+:root[data-theme="dark"] .services .section-heading h2,
+:root[data-theme="dark"] .executive-copy h2,
+:root[data-theme="dark"] .executive-copy details,
+:root[data-theme="dark"] .section-heading h2,
+:root[data-theme="dark"] .services .section-heading h2,
+:root[data-theme="dark"] .intro h2,
+:root[data-theme="dark"] .proof h2,
+:root[data-theme="dark"] .training h2,
+:root[data-theme="dark"] .contact h2,
+:root[data-theme="dark"] .home-training h2 {
+  color:var(--ink);
+}
+:root[data-theme="dark"] .services .section-heading>p,
+:root[data-theme="dark"] .executive-copy p,
+:root[data-theme="dark"] .intro-text,
+:root[data-theme="dark"] .intro-aside p,
+:root[data-theme="dark"] .proof p,
+:root[data-theme="dark"] .training p,
+:root[data-theme="dark"] .home-training p,
+:root[data-theme="dark"] .contact p:not(.eyebrow) {
+  color:var(--muted);
+}
+:root[data-theme="dark"] .services .section-heading .eyebrow,
+:root[data-theme="dark"] .services .section-heading h2 em,
+:root[data-theme="dark"] .section-heading h2 em,
+:root[data-theme="dark"] .intro h2 em,
+:root[data-theme="dark"] .proof h2 em,
+:root[data-theme="dark"] .training h2 em,
+:root[data-theme="dark"] .contact h2 em,
+:root[data-theme="dark"] .home-training h2 em {
+  color:#f0c36e;
+}
+:root[data-theme="dark"] .text-link,
+:root[data-theme="dark"] .services .text-link,
+:root[data-theme="dark"] .card-link,
+:root[data-theme="dark"] .executive-card .card-link,
+:root[data-theme="dark"] .service-card .card-link {
+  color:#f0c36e;
+}
+:root[data-theme="light"] .eyebrow,
+:root[data-theme="light"] em,
+:root[data-theme="light"] .proof-items article>span,
+:root[data-theme="light"] .section-heading h2 em,
+:root[data-theme="light"] .intro h2 em,
+:root[data-theme="light"] .proof h2 em,
+:root[data-theme="light"] .training h2 em,
+:root[data-theme="light"] .contact h2 em,
+:root[data-theme="light"] .home-training h2 em {
+  color:#76551f;
+}
+:root[data-theme="light"] .button,
+:root[data-theme="light"] .button-light {
+  color:#172630;
+}
+
 /* Homepage service showcase inspired by the supplied product video. */
 .hero-showcase {
   min-height: min(760px, calc(100svh - 78px));
@@ -1526,10 +1593,7 @@ em {
 }
 .hero-showcase .hero-photo {
   inset: 0;
-  background-image: url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=2000&q=82');
   background-position: center 42%;
-  filter: saturate(.72);
-  transition: background-image .35s ease, transform .8s ease;
 }
 .hero-showcase .hero-shade {
   background: linear-gradient(90deg, rgba(10,20,27,.96) 0%, rgba(10,20,27,.88) 44%, rgba(10,20,27,.34) 100%), linear-gradient(0deg, rgba(10,20,27,.8), transparent 58%);
@@ -1576,8 +1640,6 @@ em {
 .hero-tabs button span { color:#87969d; font-size:9px; }
 .hero-tabs button:hover, .hero-tabs button[aria-selected="true"] { color:#fff; background:rgba(255,255,255,.08); }
 .hero-tabs button[aria-selected="true"] span { color:#e8bd75; }
-.hero-showcase[data-active-service="seguranca"] .hero-photo { background-image:url('../assets/assets_JVM/jvm-treinamento-aula.jpg'); }
-.hero-showcase[data-active-service="treinamentos"] .hero-photo { background-image:url('../assets/assets_JVM/jvm-treinamento-turma.jpeg'); }
 .hero-showcase .hero-index { left:50%; }
 .hero-showcase :focus-visible { outline:2px solid #e8bd75; outline-offset:4px; }
 @media(max-width:900px) {
@@ -1840,4 +1902,246 @@ em {
 :root[data-theme="dark"] .site-header .button:hover {
   box-shadow:none !important;
   text-shadow:none !important;
+}
+
+
+/* Ilustrações SVG responsivas para os serviços JVM. */
+.hero-photo { overflow: hidden; }
+.hero-image {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 42%;
+  filter: saturate(.72);
+}
+.service-art,
+.home-training-art,
+.home-elevators-art,
+.training-nrs-art,
+.elevators-hero-art {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  box-shadow: 0 5px 18px rgba(16,40,59,.045);
+}
+.service-art {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  margin: 0 0 14px;
+}
+.home-training-inner { display: grid; grid-template-columns: minmax(0,1fr) auto auto; }
+.home-training-inner>div { max-width: 560px; }
+.home-training-art { width: clamp(150px,18vw,220px); aspect-ratio: 3 / 2; object-fit: cover; }
+.home-elevators-art { width: min(100%,480px); aspect-ratio: 3 / 2; object-fit: contain; margin: 28px auto; }
+.training-visual .training-nrs-art {
+  position: absolute;
+  z-index: 2;
+  top: 16px;
+  left: 16px;
+  width: min(42%,220px);
+  aspect-ratio: 3 / 2;
+  object-fit: contain;
+  background: var(--surface-soft);
+}
+.elevators-hero-layout {
+  display: grid;
+  grid-template-columns: minmax(0,1fr) minmax(280px,.8fr);
+  align-items: center;
+  gap: clamp(28px,6vw,80px);
+}
+.page-banner--elevators .elevators-hero-copy>p:last-child {
+  max-width: 610px;
+  margin: 22px 0 0;
+  color: #d0d9dd;
+  text-align: left;
+}
+.elevators-hero-art { width: 100%; aspect-ratio: 3 / 2; object-fit: cover; }
+@media(max-width:900px) {
+  .home-training-inner { grid-template-columns: minmax(0,1fr) auto; }
+  .home-training-art { grid-column: 1; grid-row: 2; width: min(100%,260px); justify-self: center; }
+  .home-training-inner>.button { grid-column: 2; grid-row: 1 / span 2; }
+  .elevators-hero-layout { grid-template-columns: minmax(0,1fr) minmax(230px,.7fr); }
+}
+@media(max-width:680px) {
+  .hero-image { object-fit: contain; object-position: center; opacity: .58; }
+  .hero-showcase-layout { grid-template-columns: minmax(0,1fr); }
+  .hero-showcase .hero-content, .hero-showcase .hero-feature { min-width: 0; width: 100%; max-width: 100%; }
+  .hero-showcase h1 { width: 100%; max-width: 100%; min-width: 0; font-size: clamp(32px,9vw,42px); }
+  .page-banner h1 { width: 100%; max-width: 100%; min-width: 0; font-size: clamp(30px,9vw,42px); }
+  .elevators-hero-layout, .elevators-hero-copy { width: 100%; max-width: 100%; min-width: 0; }
+  .elevators-hero-art { width: 100%; max-width: 100%; }
+  .hero-showcase .hero-feature { justify-self: stretch; }
+  .service-card { box-sizing: border-box; }
+  .service-grid { grid-template-columns: minmax(0,1fr); }
+  .service-card { width: 100%; min-width: 0; }
+  .home-training-inner { display:flex; flex-direction:column; align-items:center; gap:24px; }
+  .home-training-art { width: min(100%,280px); }
+  .home-elevators-art { width: min(100%,360px); margin:20px auto; }
+  .training-visual .training-nrs-art { top:10px; left:10px; width:38%; }
+  .elevators-hero-layout { grid-template-columns:1fr; gap:24px; text-align:center; }
+  .page-banner--elevators .elevators-hero-copy>p:last-child { margin:18px auto 0; text-align:center; }
+  .elevators-hero-art { width:min(100%,360px); justify-self:center; }
+}
+
+/* Final theme contrast corrections for all pages. */
+:root[data-theme="dark"] body,
+:root[data-theme="dark"] .intro,
+:root[data-theme="dark"] .proof,
+:root[data-theme="dark"] .training,
+:root[data-theme="dark"] .home-training,
+:root[data-theme="dark"] .contact,
+:root[data-theme="dark"] .services {
+  background:var(--surface);
+  color:var(--ink);
+}
+:root[data-theme="dark"] .section-heading h2,
+:root[data-theme="dark"] .intro h2,
+:root[data-theme="dark"] .proof h2,
+:root[data-theme="dark"] .training h2,
+:root[data-theme="dark"] .contact h2,
+:root[data-theme="dark"] .home-training h2,
+:root[data-theme="dark"] .executive-copy h2,
+:root[data-theme="dark"] .executive-copy details {
+  color:var(--ink);
+}
+:root[data-theme="dark"] .section-heading>p,
+:root[data-theme="dark"] .services .section-heading>p,
+:root[data-theme="dark"] .executive-copy p,
+:root[data-theme="dark"] .intro-text,
+:root[data-theme="dark"] .intro-aside p,
+:root[data-theme="dark"] .proof p,
+:root[data-theme="dark"] .training p,
+:root[data-theme="dark"] .home-training p,
+:root[data-theme="dark"] .contact p:not(.eyebrow) {
+  color:var(--muted);
+}
+:root[data-theme="dark"] .services .section-heading .eyebrow,
+:root[data-theme="dark"] .services .section-heading h2 em,
+:root[data-theme="dark"] .section-heading h2 em,
+:root[data-theme="dark"] .intro h2 em,
+:root[data-theme="dark"] .proof h2 em,
+:root[data-theme="dark"] .training h2 em,
+:root[data-theme="dark"] .contact h2 em,
+:root[data-theme="dark"] .home-training h2 em,
+:root[data-theme="dark"] .text-link,
+:root[data-theme="dark"] .card-link {
+  color:#f0c36e;
+}
+:root[data-theme="light"] .eyebrow,
+:root[data-theme="light"] em,
+:root[data-theme="light"] .proof-items article>span,
+:root[data-theme="light"] .section-heading h2 em,
+:root[data-theme="light"] .intro h2 em,
+:root[data-theme="light"] .proof h2 em,
+:root[data-theme="light"] .training h2 em,
+:root[data-theme="light"] .contact h2 em,
+:root[data-theme="light"] .home-training h2 em {
+  color:#76551f;
+}
+
+/* Override legacy dark mode colors on the home services section. */
+:root[data-theme="dark"] .services .section-heading h2,
+:root[data-theme="dark"] .services .section-heading h2 em {
+  color:#f4f7f8 !important;
+}
+:root[data-theme="dark"] .services .section-heading h2 em {
+  color:#f0c36e !important;
+}
+:root[data-theme="dark"] .services .section-heading>p {
+  color:#c2d0d6 !important;
+}
+:root[data-theme="dark"] .services .section-heading .eyebrow {
+  color:#f0c36e !important;
+}
+
+/* Footer contrast on its dark background in both themes. */
+.footer,
+.footer .brand-footer,
+.footer .brand-copy {
+  color:#f4f7f8 !important;
+}
+.footer .footer-main>p,
+.footer .footer-contact span,
+.footer .footer-bottom {
+  color:#c2d0d6 !important;
+}
+.footer .footer-links a,
+.footer .footer-contact a {
+  color:#e8eef1 !important;
+}
+.footer .footer-links a:hover,
+.footer .footer-contact a:hover {
+  color:#f0c36e !important;
+}
+
+/* CTA banner contrast, including its outlined action button. */
+.contact-cta,
+.contact-cta .cta-inner h2,
+.contact-cta .cta-inner>div,
+.contact-cta p:not(.eyebrow) {
+  color:#f4f7f8 !important;
+}
+.contact-cta .cta-inner .eyebrow,
+.contact-cta .cta-inner h2 em,
+.contact-cta .cta-whatsapp {
+  color:#f0c36e !important;
+}
+.contact-cta .button-light,
+.contact-cta .button-light:hover {
+  background:#f0c36e !important;
+  border-color:#f0c36e !important;
+  color:#172630 !important;
+}
+
+/* Preserve light text on the dark hero and banner surfaces in light mode. */
+:root[data-theme="light"] .hero-showcase,
+:root[data-theme="light"] .hero-showcase h1,
+:root[data-theme="light"] .hero-showcase .hero-lead,
+:root[data-theme="light"] .hero-showcase .hero-index,
+:root[data-theme="light"] .page-banner,
+:root[data-theme="light"] .page-banner h1,
+:root[data-theme="light"] .page-banner>div>p:last-child {
+  color:#f4f7f8;
+}
+:root[data-theme="light"] .hero-showcase h1 em,
+:root[data-theme="light"] .hero-showcase .eyebrow,
+:root[data-theme="light"] .page-banner h1 em,
+:root[data-theme="light"] .page-banner .eyebrow,
+:root[data-theme="light"] .contact-cta .cta-inner .eyebrow,
+:root[data-theme="light"] .contact-cta .cta-inner h2 em {
+  color:#f0c36e;
+}
+:root[data-theme="light"] .hero-showcase .text-link,
+:root[data-theme="light"] .hero-showcase .hero-feature,
+:root[data-theme="light"] .hero-showcase .hero-feature h2,
+:root[data-theme="light"] .hero-showcase .hero-feature p,
+:root[data-theme="light"] .hero-showcase .hero-tabs button {
+  color:#f4f7f8;
+}
+
+/* Readable colors inside the dark service detail panel in light mode. */
+:root[data-theme="light"] .service-detail .detail-heading h2,
+:root[data-theme="light"] .service-detail .detail-heading>p:not(.eyebrow),
+:root[data-theme="light"] .service-detail .detail-list,
+:root[data-theme="light"] .service-detail .detail-list p {
+  color:#f4f7f8 !important;
+}
+:root[data-theme="light"] .service-detail .detail-heading h2 em,
+:root[data-theme="light"] .service-detail .detail-heading .eyebrow {
+  color:#f0c36e !important;
+}
+:root[data-theme="light"] .service-detail .button-outline {
+  color:#f4f7f8 !important;
+  background:transparent !important;
+  border-color:#b7c7ce !important;
+}
+:root[data-theme="light"] .service-detail .button-outline:hover {
+  color:#172630 !important;
+  background:#f4f7f8 !important;
 }
